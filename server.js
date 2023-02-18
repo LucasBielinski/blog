@@ -5,21 +5,21 @@ const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/config");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // configure express-session
 const sess = {
   secret: process.env.Secret,
-  Cookie: {
+  cookie: {
     // 20 min
     maxAge: 1200000,
     httpOnly: true,
-    secure: true,
+    secure: false,
     sameSite: "strict",
   },
   resave: false,
-  saveUninitalized: true,
+  saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
   }),
