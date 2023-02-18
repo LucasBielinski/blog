@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post } = require("../../models/");
 const withAuth = require("../../utils/auth");
+const actAuth = require("../../utils/actauth");
 
 router.post("/", withAuth, async (req, res) => {
   try {
@@ -17,7 +18,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", withAuth, actAuth, async (req, res) => {
   try {
     const post = Post.update(req.body, {
       where: {
@@ -32,7 +33,7 @@ router.put("/:id", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 }),
-  router.delete("/:id", withAuth, async (req, res) => {
+  router.delete("/:id", withAuth, actAuth, async (req, res) => {
     try {
       const post = Post.destroy(req.body, {
         where: {
