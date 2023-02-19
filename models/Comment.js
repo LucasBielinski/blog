@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const dataTypes = require("sequelize/lib/data-types");
 const sequelize = require("../config/config");
 
 class Comment extends Model {}
@@ -7,6 +8,7 @@ Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
       autoIncrement: true,
     },
@@ -22,6 +24,7 @@ Comment.init(
       },
     },
     post_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: "post",
         key: "id",
