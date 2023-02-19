@@ -12,7 +12,7 @@ router.post("/", withAuth, async (req, res) => {
     if (!post) {
       res.status(404).json({ message: "can not create" });
     }
-    res.status(200).res.json(post);
+    res.status(200).json(post);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -20,7 +20,7 @@ router.post("/", withAuth, async (req, res) => {
 
 router.put("/:id", withAuth, actAuth, async (req, res) => {
   try {
-    const post = Post.update(req.body, {
+    const post = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -35,7 +35,7 @@ router.put("/:id", withAuth, actAuth, async (req, res) => {
 }),
   router.delete("/:id", withAuth, actAuth, async (req, res) => {
     try {
-      const post = Post.destroy(req.body, {
+      const post = await Post.destroy({
         where: {
           id: req.params.id,
         },

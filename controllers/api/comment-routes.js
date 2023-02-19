@@ -8,9 +8,9 @@ router.post("/", withAuth, async (req, res) => {
       description: req.body.body,
     });
     if (!commentData) {
-      res.status(404).res({ message: "could not create" });
+      res.status(404).json({ message: "could not create" });
     }
-    res.status(200).res.json(commentData);
+    res.status(200).json(commentData);
   } catch (error) {
     res.status(500).json(error);
   }
