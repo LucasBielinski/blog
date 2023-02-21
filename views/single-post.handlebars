@@ -4,7 +4,7 @@
       <h2>{{post.title}}</h2>
       <div>
         Posted by
-        {{post.User.username}}
+        {{post.user.username}}
         on
         {{format_date post.createdAt}}
       </div>
@@ -14,19 +14,23 @@
     </div>
   </article>
 
-  {{#if comments.length}}
-  {{#each comments as || comment}}
-  <div class="card">
-    <div class="card-header">
-      <h2>Comment By {{comment.User.username}} on {{format_date comment.createdAt}}</h2>
-    </div>
-    <div class="card-body">
-      <p>
-        {{comment.description}}
-      </p>
-    </div>
-  </div>
-
+  {{#if post.comments.length}}
+    {{#each post.comments as |comment|}}
+      <div class="card">
+        <div class="card-header">
+          <h2>Comment By
+            {{comment.user.username}}
+            on
+            {{format_date comment.createdAt}}</h2>
+        </div>
+        <div class="card-body">
+          <p>
+            {{comment.description}}
+          </p>
+        </div>
+      </div>
+    {{/each}}
+  {{/if}}
   <form id="new-comment-form" class="card">
     <div class="card-header">
       <h3>Add New Comment</h3>

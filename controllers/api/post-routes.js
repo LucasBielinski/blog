@@ -8,6 +8,7 @@ router.post("/", withAuth, async (req, res) => {
     const post = await Post.create({
       title: req.body.title,
       body: req.body.body,
+      user_id: req.session.user_id,
     });
     if (!post) {
       res.status(404).json({ message: "can not create" });
@@ -18,11 +19,12 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.put("/:id", withAuth, actAuth, async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const post = await Post.update(req.body, {
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
     if (!post) {
@@ -33,11 +35,13 @@ router.put("/:id", withAuth, actAuth, async (req, res) => {
     res.status(500).json(error);
   }
 }),
-  router.delete("/:id", withAuth, actAuth, async (req, res) => {
+  router.delete("/:id", withAuth, async (req, res) => {
     try {
       const post = await Post.destroy({
         where: {
-          id: req.params.id,
+          id: req.params.id,      
+          user_id: req.session.user_id
+
         },
       });
       if (!post) {
