@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 const actAuth = require("../../utils/actauth");
-
+// create post
 router.post("/", withAuth, async (req, res) => {
   try {
     const post = await Post.create({
@@ -18,7 +18,7 @@ router.post("/", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
-
+// update post
 router.put("/:id", withAuth, async (req, res) => {
   try {
     const post = await Post.update(req.body, {
@@ -35,13 +35,13 @@ router.put("/:id", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 }),
+  // delete post
   router.delete("/:id", withAuth, async (req, res) => {
     try {
       const post = await Post.destroy({
         where: {
-          id: req.params.id,      
-          user_id: req.session.user_id
-
+          id: req.params.id,
+          user_id: req.session.user_id,
         },
       });
       if (!post) {

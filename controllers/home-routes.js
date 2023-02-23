@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models/");
 
-// get all posts for homepage
+// gets all home page posts
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
+    // sends posts and log in credentials
     res.render("all-posts", { posts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
@@ -22,6 +23,7 @@ router.get("/post/:id", async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         User,
+        // includes comments
         {
           model: Comment,
           include: [User],
@@ -32,7 +34,11 @@ router.get("/post/:id", async (req, res) => {
     if (postData) {
       const post = postData.get({ plain: true });
       console.log(post);
-      res.render("single-post", { post, logged_in: req.session.logged_in });
+      res.render("single-post", {
+        post,
+        logged_in: req.session.logged_in,
+        user_id: req.session.user_id,
+      });
     } else {
       res.status(404).end();
     }
@@ -41,7 +47,7 @@ router.get("/post/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// renders login page
 router.get("/login", (req, res) => {
   console.log("Viewing login");
   console.log(req.session);
@@ -52,7 +58,7 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
-
+// renders signup page
 router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("/");

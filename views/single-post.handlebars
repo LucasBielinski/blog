@@ -1,3 +1,4 @@
+{{!-- sets template for single post and comments --}}
 <div class="post">
   <article class="card">
     <div class="card-header flex-row justify-space-between">
@@ -11,7 +12,13 @@
     </div>
     <div class="card-body">
       {{post.body}}
-    </div>
+      {{!-- {{#if (user_id "===" post.user.id)}} --}}
+      <div>
+        <a href="/dashboard/edit/{{post.id}}">
+        <button class="bttn">Edit</button>
+        </a>
+      </div>
+      {{!-- {{/if}} --}}
   </article>
 
   {{#if post.comments.length}}

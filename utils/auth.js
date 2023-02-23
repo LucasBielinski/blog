@@ -8,3 +8,4 @@ const withAuth = (req, res, next) => {
 };
 
 module.exports = withAuth;
+// if the session does not have a user id redirect to login
