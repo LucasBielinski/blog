@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
-const dataTypes = require("sequelize/lib/data-types");
-const sequelize = require("../config/config");
 
+const sequelize = require("../config/config");
+// sets up comic model
 class Comment extends Model {}
 
 Comment.init(
@@ -13,7 +13,7 @@ Comment.init(
       autoIncrement: true,
     },
     description: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {

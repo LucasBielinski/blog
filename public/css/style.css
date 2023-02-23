@@ -1,7 +1,7 @@
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
-  --tertiary: #788585;
+  --primary: #7466c5;
+  --secondary: #0d251e;
+  --tertiary: #bd9f9f;
   --light-dark: #6f6866;
   --dark: #38302e;
   --border-radius: 0.3rem;
@@ -59,11 +59,11 @@ p {
 }
 
 input {
-    width: 100%;
-    border: 1px solid #ccc;
-    background: #FFF;
-    margin: 0 0 5px;
-    padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
 }
 
 .card-header h2 {
@@ -84,6 +84,12 @@ input {
   background-color: var(--light-dark);
   box-shadow: 3px 3px var(--dark);
   transform: translate(-1px, -1px);
+}
+.bttn:hover {
+  color: var(--primary);
+  background-color: var(--tertiary);
+  transform: translate(0, 0);
+  box-shadow: 2px 2px var(--dark);
 }
 
 .btn:hover {
@@ -159,7 +165,7 @@ input {
 .footer a {
   display: inline-block;
   padding: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   background-color: var(--dark);
   color: var(--primary);
   border-radius: var(--border-radius);
@@ -182,6 +188,23 @@ input {
 
 .card-body {
   padding: 1%;
+}
+.card:hover {
+  opacity: 80%;
+}
+.bttn {
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 6px 5px;
+  /* display: block; */
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  color: var(--primary);
+  border: none;
+  outline: none;
+  background-color: var(--light-dark);
+  box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);
 }
 
 /* FORM */

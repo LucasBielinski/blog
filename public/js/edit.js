@@ -1,5 +1,5 @@
 const id = document.querySelector('input[name="post-id"]').value;
-
+//sets up edit route for post
 const editFormHandler = async function(event) {
   event.preventDefault();
 
