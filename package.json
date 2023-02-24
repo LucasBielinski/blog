@@ -28,5 +28,8 @@
   },
   "devDependencies": {
     "connect-session-sequelize": "^7.1.5"
+  },
+  "engines":{
+    "node": "16.x"
   }
 }
