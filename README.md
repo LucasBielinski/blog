@@ -13,7 +13,7 @@ The following node programs must be installed if running from the terminal, bcry
 In order to use this project, click on the create new poat button and enter the info you would like your post to be about. If you would like to comment, click on a post and enter your comment in the comment box below. If you would like to edit a post, click on your post and hit update or delete.
 
 ![image of project](./public/assets/project.png)
-https://lucasbielinski.github.io/bielinski-quiz/
+https://thecyberspace.herokuapp.com/
 
 ## Credits
 
