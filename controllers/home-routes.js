@@ -38,6 +38,7 @@ router.get("/post/:id", async (req, res) => {
         post,
         logged_in: req.session.logged_in,
         user_id: req.session.user_id,
+        canEdit: req.session.user_id === post.user_id
       });
     } else {
       res.status(404).end();
