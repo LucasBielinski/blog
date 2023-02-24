@@ -12,13 +12,13 @@
     </div>
     <div class="card-body">
       {{post.body}}
-      {{!-- {{#if (user_id "===" post.user.id)}} --}}
+      {{#if canEdit}}
       <div>
         <a href="/dashboard/edit/{{post.id}}">
         <button class="bttn">Edit</button>
         </a>
       </div>
-      {{!-- {{/if}} --}}
+      {{/if}}
   </article>
 
   {{#if post.comments.length}}
